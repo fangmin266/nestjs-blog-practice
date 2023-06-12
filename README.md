@@ -30,6 +30,7 @@ nestjs에서 제공하는 head 컴퍼너트에 title, image, description등 og t
 3. SSG(build time) / SSR(request time)
    정적페이지
    getStaticProps - SSG (marketing, blog, product list, help documnentation)
+
    동적페이지
    getServerSideProps - SSR
    ISR, CSR
@@ -38,4 +39,11 @@ nestjs에서 제공하는 head 컴퍼너트에 title, image, description등 og t
 
 ```
 yarn add gray-matter (md 파일 파싱)
+yarn add remark remark-html (md 파일 해석)
 ```
+
+static한 props의 경우 fs에서 읽어오기 가능,
+csr의 경우 api fetch하여 클라이언트 사이드에서 적용 가능
+
+5. dynamic routes
+   getStaticPath => getStaticProps의 경로지정함수 (fallback)

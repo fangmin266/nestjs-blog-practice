@@ -5,15 +5,20 @@ import Layout, { siteTitle } from '../components/Layout'
 import utilStyles from '../styles/utils.module.css'
 // import { getSortedPostsData } from '../lib/post'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { getSortedPostsData } from '../lib/post'
 
-// export async function getStaticProps() { //SSG
-//   const allPostsData = getSortedPostsData()
-//   return {
-//     props: {
-//       allPostsData,
-//     },
-//   }
-// }
+export async function getStaticProps() {
+  //SSG
+
+  const allPostsData = getSortedPostsData()
+  console.log(allPostsData, 'thisis allpostdata!!!!')
+  return {
+    props: {
+      allPostsData,
+    },
+  }
+}
 
 // export async function getServerSideProps() { //SSR
 //   const allPostsData = getSortedPostsData()
@@ -24,14 +29,14 @@ import { useEffect, useState } from 'react'
 //   }
 // }
 
-export default function Home() {
-  // export default function Home({ allPostsData }) {
-  const [allPostsData, setAllpostData] = useState([]) // CSR
-  useEffect(() => {
-    fetch('/api/posts')
-      .then((res) => res.json())
-      .then((data) => setAllpostData(data.allPostsData))
-  }, [])
+export default function Home({ allPostsData }) {
+  // export default function Home() {
+  // const [allPostsData, setAllpostData] = useState([]) // CSR
+  // useEffect(() => {
+  //   fetch('/api/posts')
+  //     .then((res) => res.json())
+  //     .then((data) => setAllpostData(data.allPostsData))
+  // }, [])
   return (
     <Layout home>
       <Head>
@@ -49,7 +54,9 @@ export default function Home() {
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              {title}
+              <Link legacyBehavior href={`/posts/${id}`}>
+                <a>{title}</a>
+              </Link>
               <br />
               {id}
               <br />
