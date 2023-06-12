@@ -47,3 +47,24 @@ csr의 경우 api fetch하여 클라이언트 사이드에서 적용 가능
 
 5. dynamic routes
    getStaticPath => getStaticProps의 경로지정함수 (fallback)
+
+6. 배포 (vecel)
+   vecel.com 로 배포시 1회 배포하면 git 커밋 내역 확인가능
+
+7. site-map 생성
+   https://www.npmjs.com/package/next-sitemap
+
+8. eslint 규칙 생성
+
+```
+npm i -D eslint
+npm eslint --init
+
+//eslint-disable-next-line no-undef
+
+//build시 테일윈드 적용안 될시
+ yarn add -D eslint-plugin-tailwindcss
+```
+
+build 시 생성하는 error 이슈 .eslintrc.js에서 관리
+<img width="1617" alt="스크린샷 2023-06-12 오후 7 28 23" src="https://github.com/fangmin266/vercel-blog/assets/123913446/087ab28a-fefd-4a0d-a3b1-073f0448b325">

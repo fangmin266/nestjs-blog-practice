@@ -1,10 +1,8 @@
-import Image from 'next/image'
-
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/Layout'
 import utilStyles from '../styles/utils.module.css'
 // import { getSortedPostsData } from '../lib/post'
-import { useEffect, useState } from 'react'
+
 import Link from 'next/link'
 import { getSortedPostsData } from '../lib/post'
 
@@ -43,7 +41,7 @@ export default function Home({ allPostsData }) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>[Your Self Introduction]</p>
+        <p className="bg-purple-700 text-bold">[Your Self Introduction]</p>
         <p>
           (This is a sample website - you’ll be building a site like this on{' '}
           <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
